@@ -433,6 +433,11 @@ client.on('message', msg => {
     return;
   }
 
+  if(c.includes("haku") && c.includes("source"))
+  {
+    msg.channel.send("If you really have to see it, its here. Please be gentle owo. https://github.com/afringer/Haku");
+    return;
+  }
 
 });
 
