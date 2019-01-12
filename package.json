@@ -1,0 +1,20 @@
+{
+  "name": "Haku",
+  "version": "1.0.0",
+  "description": "A bot that tries to make kristen cry",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.5",
+    "@babel/preset-env": "^7.1.5"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "discord.js": "^11.4.2"
+  }
+}
