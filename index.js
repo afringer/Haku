@@ -319,13 +319,13 @@ client.on("error", function(err)
 client.on('message', msg => {
   console.log(msg.author.username);
 
-  if(msg.author.username == "Haku")
+  if(msg.author.username === "Haku")
   {
     return;
   }
 
 
-  if(msg.author.username == "Cheesecake")
+  if(msg.author.username === "Cheesecake")
   {
     lastKristen = Date.now();
   }
@@ -354,7 +354,7 @@ client.on('message', msg => {
 
   if(c.includes("good") && c.includes("morning"))
   {
-    if(msg.author.username == "Cheesecake")
+    if(msg.author.username === "Cheesecake")
     {
       msg.channel.send(randomString(goodMorningK));
     }
@@ -368,7 +368,7 @@ client.on('message', msg => {
 
   if(c.includes("good") && c.includes("night"))
   {
-    if(msg.author.username == "Cheesecake")
+    if(msg.author.username === "Cheesecake")
     {
       msg.channel.send(randomString(goodNightK));
     }
@@ -382,7 +382,7 @@ client.on('message', msg => {
 
   if(c.includes("good") && c.includes("afternoon"))
   {
-    if(msg.author.username == "Cheesecake")
+    if(msg.author.username === "Cheesecake")
     {
       msg.channel.send(randomString(goodAfternoonListK));
     }
@@ -400,7 +400,7 @@ client.on('message', msg => {
     return;
   }
 
-  if((c.includes("friends") || c.includes("friend"))&& (c.includes("message") || c.includes("messages")) && msg.author.username == "Cheesecake")
+  if((c.includes("friends") || c.includes("friend"))&& (c.includes("message") || c.includes("messages")) && msg.author.username === "Cheesecake")
   {
     msg.channel.send(randomString(freindMessages));
     return;
@@ -416,7 +416,7 @@ client.on('message', msg => {
     }
     else
     {
-      if(msg.author.username == "Cheesecake")
+      if(msg.author.username === "Cheesecake")
       {
         msg.channel.send(randomString(doingOkK))
       }
@@ -427,7 +427,7 @@ client.on('message', msg => {
     }
     return;
   }
-  if(c.includes("i") && c.includes("love") && c.includes("you") && c.includes("haku") && msg.author.username == "Cheesecake")
+  if(c.includes("i") && c.includes("love") && c.includes("you") && c.includes("haku") && msg.author.username === "Cheesecake")
   {
     msg.channel.send(randomString(iLoveYouToo));
     return;
