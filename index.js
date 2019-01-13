@@ -1,10 +1,10 @@
-const Discord = require('discord.js');
-const config = require('./config.js');
+const Discord = require("discord.js");
+const config = require("./config.js");
+const KristenUserId = 326959353603031040;
 
-var client = new Discord.Client();
+const client = new Discord.Client();
 
-var KristenMentions = 
-[
+const KristenMentions = [
   "Kristen? I love her!",
   "owo Kwisten? I wove Kwisten!",
   "HEY UHHHH KRISTEN?",
@@ -35,12 +35,9 @@ var KristenMentions =
   "owo",
   "uwu",
   "o///w///o"
+];
 
-
-]
-
-var gourdList = 
-[
+const gourdList = [
   "Pumpkin",
   "Blue Bananna",
   "Crown Prince",
@@ -52,17 +49,17 @@ var gourdList =
   "PattyPan Squash",
   "Watermelon",
   "cantelope"
-]
+];
 
-var goodMorning = [
+const goodMorning = [
   "Good Morning!",
   "GOOD MORNING!",
   "Hello, Good Morning!",
   "Its always a good morning when Kristen is around",
   "Good Morning uwu"
-]
+];
 
-var goodMorningK = [
+const goodMorningK = [
   "Kristen!!",
   "KRISTEN!!",
   "KRISTEN!! GOOD MORNING!!",
@@ -88,18 +85,18 @@ var goodMorningK = [
   "Buenas Dias!",
   "HEWWO!!",
   "Good Morning!! Have a good day today!!"
-]
+];
 
-var goodAfternoonList = [
+const goodAfternoonList = [
   "Good Afternoon!",
   "Good Afternoon",
   "It's always a good afternoon when Kristen is around",
   "Good Afternoon uwu",
   "It's lunch time!",
   "It's time for my nap uwu"
-]
+];
 
-var goodAfternoonListK = [
+const goodAfternoonListK = [
   "Kristen!!",
   "Good Afternoon!!",
   "Good!! Afternoon!!",
@@ -114,16 +111,16 @@ var goodAfternoonListK = [
   "Kristen!! I hope your day is going well!!",
   "Kristen!! I hope you had lunch already. I would make you a bento but my paws are too small!!",
   "K R I S T E N"
-]
+];
 
-var goodNight = [
-"Goodnight!",
-"uwu goodnite!",
-"Sleep tight! Don't let the bed mice bite!",
-"Night Night!"
-]
+const goodNight = [
+  "Goodnight!",
+  "uwu goodnite!",
+  "Sleep tight! Don't let the bed mice bite!",
+  "Night Night!"
+];
 
-var goodNightK = [
+const goodNightK = [
   "Goodnight!!",
   "Goodnight Kristen!!",
   "GOODNIGHT!!",
@@ -138,11 +135,10 @@ var goodNightK = [
   "If you're going to bed I'm going to bed too!! Then I will see you again sooner!!",
   "Oyasumi Nasai!!",
   "Goodnight Kristen! I would tuck you in but I'm just too small!!",
-  "*sad squeaks*",
+  "*sad squeaks*"
+];
 
-]
-
-var freindMessages = [
+const freindMessages = [
   "Jose says Sayori wishes you a sun filled day.",
   "Lily thinks you're a good friend and a great person!!",
   "Lily hopes you're having a good day today!!",
@@ -180,11 +176,9 @@ var freindMessages = [
   "Adam says 'Hurry up and die, no one is around to save you', You know, because kevin",
   "Kelsey feels loved when Kristen is around.",
   "Adam says 'man I love this job. If anyone is ever rude to me I get to charge them money for wasting my time or send a court order to get what I want'"
-]
+];
 
-
-
-var hawList = [
+const hawList = [
   "HAWWWW",
   "Haw",
   "HHHHHHHHHAAWWW",
@@ -193,9 +187,9 @@ var hawList = [
   "HAW",
   "HAAW",
   "HAAWWW"
-]
+];
 
-var missKristen = [
+const missKristen = [
   "I miss Kristen",
   "I just *clenches paw* miss Kristen",
   "I just miss Kristen",
@@ -226,9 +220,9 @@ var missKristen = [
   "Missing Kristen...",
   "I miss Kristen....don't you?",
   "I am thinking about taking a nap so that I can dream about Kristen"
-]
+];
 
-var doingOk = [
+const doingOk = [
   "I'm doing ok! Kristen is here!",
   "I'm doing ok!",
   "I'm doing well!",
@@ -263,9 +257,9 @@ var doingOk = [
   "I'm ok uwu",
   "This is me :)",
   "Good!"
-]
+];
 
-var doingOkK = [
+const doingOkK = [
   "I'm doing ok!!",
   "I'm doing well!!",
   "I'm doing ok!! Better now that you're here!!",
@@ -288,9 +282,9 @@ var doingOkK = [
   "I'm doing great!! I found a video that reminds me of you!! https://www.youtube.com/watch?v=kd7KC3PaEaA",
   "I'm doing great!! I'm watching this video that reminds me of you https://www.youtube.com/watch?v=dJJFkOVHEng",
   "I'm doing awesome!! I found a funny video I think you'll like! https://www.youtube.com/watch?v=NEgwxGWgiIg"
-]
+];
 
-var iLoveYouToo = [
+const iLoveYouToo = [
   "YOU?? LOVE?? ME??? I LOVE YOU!!!",
   "I LOVE YOU TOO!!",
   "I!! LOVE!! YOU!! TOO!!",
@@ -303,148 +297,129 @@ var iLoveYouToo = [
   "TE AMO KRISTEN!!"
 ];
 
+let lastKristen = 0;
 
-
-var lastKristen = 0;
-
-client.on('ready', () => {
+client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.on("error", function(err)
-{
+client.on("error", function(err) {
   console.log(err);
-})
+});
 
-client.on('message', msg => {
+client.on("message", msg => {
   console.log(msg.author.username);
 
-  if(msg.author.username === "Haku")
-  {
+  if (msg.author.username === "Haku") {
     return;
   }
 
-
-  if(msg.author.username === "Cheesecake")
-  {
+  if (msg.author.id === KristenUserId) {
     lastKristen = Date.now();
   }
 
   let c = msg.content.toLowerCase();
 
-  if(c.includes("kristen") || c.includes("cheesecake"))
-  {
+  if (c.includes("kristen") || c.includes("cheesecake")) {
     msg.channel.send(randomString(KristenMentions));
     return;
   }
 
-  if(c.includes("yee"))
-  {
-    if(c.includes("haw"))
-    {
+  if (c.includes("yee")) {
+    if (c.includes("haw")) {
       msg.channel.send("YEE-HAW!");
       return;
-    }
-    else
-    {
+    } else {
       msg.channel.send(randomString(hawList));
       return;
     }
   }
 
-  if(c.includes("good") && c.includes("morning"))
-  {
-    if(msg.author.username === "Cheesecake")
-    {
+  if (c.includes("good") && c.includes("morning")) {
+    if (msg.author.id === KristenUserId) {
       msg.channel.send(randomString(goodMorningK));
-    }
-    else
-    {
+    } else {
       msg.channel.send(randomString(goodMorning));
     }
-    
+
     return;
   }
 
-  if(c.includes("good") && c.includes("night"))
-  {
-    if(msg.author.username === "Cheesecake")
-    {
+  if (c.includes("good") && c.includes("night")) {
+    if (msg.author.username === KristenUserId) {
       msg.channel.send(randomString(goodNightK));
-    }
-    else
-    {
+    } else {
       msg.channel.send(randomString(goodNight));
     }
-    
+
     return;
   }
 
-  if(c.includes("good") && c.includes("afternoon"))
-  {
-    if(msg.author.username === "Cheesecake")
-    {
+  if (c.includes("good") && c.includes("afternoon")) {
+    if (msg.author.username === KristenUserId) {
       msg.channel.send(randomString(goodAfternoonListK));
-    }
-    else
-    {
+    } else {
       msg.channel.send(randomString(goodAfternoonList));
     }
-    
+
     return;
   }
 
-  if(c.includes("gourd"))
-  {
+  if (c.includes("gourd")) {
     msg.channel.send("I have a " + randomString(gourdList));
     return;
   }
 
-  if((c.includes("friends") || c.includes("friend"))&& (c.includes("message") || c.includes("messages")) && msg.author.username === "Cheesecake")
-  {
+  if (
+    (c.includes("friends") || c.includes("friend")) &&
+    (c.includes("message") || c.includes("messages")) &&
+    msg.author.username === KristenUserId
+  ) {
     msg.channel.send(randomString(freindMessages));
     return;
   }
 
-  if(c.includes("how") && c.includes("are") && c.includes("you") && c.includes("haku"))
-  {
+  if (
+    c.includes("how") &&
+    c.includes("are") &&
+    c.includes("you") &&
+    c.includes("haku")
+  ) {
     let timeSinceKristen = Date.now() - lastKristen;
     let twoHours = 1000 * 60 * 60 * 2;
-    if(timeSinceKristen > twoHours)
-    {
+    if (timeSinceKristen > twoHours) {
       msg.channel.send(randomString(missKristen));
-    }
-    else
-    {
-      if(msg.author.username === "Cheesecake")
-      {
-        msg.channel.send(randomString(doingOkK))
-      }
-      else
-      {
-        msg.channel.send(randomString(doingOk))
+    } else {
+      if (msg.author.username === KristenUserId) {
+        msg.channel.send(randomString(doingOkK));
+      } else {
+        msg.channel.send(randomString(doingOk));
       }
     }
     return;
   }
-  if(c.includes("i") && c.includes("love") && c.includes("you") && c.includes("haku") && msg.author.username === "Cheesecake")
-  {
+  if (
+    c.includes("i") &&
+    c.includes("love") &&
+    c.includes("you") &&
+    c.includes("haku") &&
+    msg.author.username === KristenUserId
+  ) {
     msg.channel.send(randomString(iLoveYouToo));
     return;
   }
 
-  if(c.includes("haku") && c.includes("source"))
-  {
-    msg.channel.send("If you really have to see it, its here. Please be gentle owo. https://github.com/afringer/Haku");
+  if (c.includes("haku") && c.includes("source")) {
+    msg.channel.send(
+      "If you really have to see it, its here. Please be gentle OwO. https://github.com/afringer/Haku"
+    );
     return;
   }
-
 });
 
-var randomString= function(array)
-{
+const randomString = function(array) {
   let index = Math.floor(Math.random() * array.length);
   return array[index];
-}
+};
 
 client.login(config.key);
