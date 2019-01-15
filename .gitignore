@@ -1,0 +1,9 @@
+node_modules
+package-lock.json
+config-prod.js
+config-dev.js
+config.js
+
+logs
+*.log
+npm-debug.log*
