@@ -19,7 +19,7 @@ client.on("error", function(err) {
 client.on("message", (msg) => {
 	console.log(msg.author.username);
 
-	if (msg.author.username === "Haku") {
+	if (msg.author.username === client.user.username) {
 		return;
 	}
 
@@ -88,7 +88,7 @@ client.on("message", (msg) => {
 		return;
 	}
 
-	if (c.includes("how") && c.includes("are") && c.includes("you") && c.includes("haku")) {
+	if (c.includes("how") && c.includes("are") && c.includes("you") && c.includes(client.user.username)) {
 		let timeSinceKristen = Date.now() - lastKristen;
 		let twoHours = 1000 * 60 * 60 * 2;
 		if (timeSinceKristen > twoHours) {
@@ -106,14 +106,14 @@ client.on("message", (msg) => {
 		c.includes("i") &&
 		c.includes("love") &&
 		c.includes("you") &&
-		c.includes("haku") &&
+		c.includes(client.user.username) &&
 		msg.author.username === KristenUserId
 	) {
 		msg.channel.send(randomString(responses.iLoveYouToo));
 		return;
 	}
 
-	if (c.includes("haku") && c.includes("source")) {
+	if (c.includes(client.user.username) && c.includes("source")) {
 		msg.channel.send("If you really have to see it, its here. Please be gentle OwO. https://github.com/afringer/Haku");
 		return;
 	}
