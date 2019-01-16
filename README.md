@@ -1,16 +1,18 @@
 # Haku
+
 Kristen's bot, who's source code EVERYONE needs to see.
 
 # Development Setup
 
 ## Clone
+
 Clone repo and run the following
 
 ```
 $ npm install
 ```
-Ignore warnings about peer dependencies.
 
+Ignore warnings about peer dependencies.
 
 Copy `config-sample.js` to `config-dev.js` or `config-prod.js`. The
 value of the key should be that of Application bot token. Discord
@@ -30,3 +32,5 @@ https://discordapp.com/oauth2/authorize?client_id=<client id>&scope=bot&permissi
 
 Replace `client id` with the application client id. This is found under
 Developer Portal -> Your Application -> General Information.
+
+Once you have your environment set up, run `npm run dev` to launch the bot

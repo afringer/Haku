@@ -1,1 +1,3 @@
-exports.key = "";
+module.exports = {
+	key: "",
+};
