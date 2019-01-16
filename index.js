@@ -17,7 +17,7 @@ client.on("error", function(err) {
 });
 
 client.on("message", (msg) => {
-	console.log(msg.author.username);
+	console.log(util.format("User %s (id: %d) wrote: %s", msg.author.username, msg.author.id, msg.content));
 
 	if (msg.author.username === client.user.username) {
 		return;
@@ -48,7 +48,7 @@ client.on("message", (msg) => {
 		if (msg.author.id === KristenUserId) {
 			msg.channel.send(randomString(responses.goodMorningK));
 		} else {
-			msg.channel.send(randomString(responses.goodMorning));
+			msg.channel.send(randomString(responses.goodMorning, msg.author.username));
 		}
 
 		return;
@@ -119,9 +119,11 @@ client.on("message", (msg) => {
 	}
 });
 
-const randomString = function(array) {
-	let index = Math.floor(Math.random() * array.length);
-	return array[index];
+const randomString = function(array, username = "") {
+	const msg = array[Math.floor(Math.random() * array.length)];
+	if (msg.includes("%s")) return util.format(msg, username);
+
+	return msg;
 };
 
 client.login(config.key);
