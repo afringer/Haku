@@ -73,6 +73,15 @@ client.on("message", (msg) => {
 
 		return;
 	}
+	if (c.includes("good") && c.includes("evening")) {
+		if (msg.author.id === KristenUserId) {
+			msg.channel.send(randomString(responses.goodEveningListK));
+		} else {
+			msg.channel.send(randomString(responses.goodEveningList));
+		}
+
+		return;
+	}
 
 	if (c.includes("gourd")) {
 		msg.channel.send("I have a " + randomString(responses.gourdList));
