@@ -185,7 +185,7 @@ response.freindMessages = [
 	"Kelsey feels loved when Kristen is around.",
 	"Adam says 'man I love this job. If anyone is ever rude to me I get to charge them money for wasting my time or send a court order to get what I want'",
 	"Jose loves seeing your happy face!",
-	"Jose says 'With your own personal Meka you'll show those noobs who numbah 1 is. :D'"
+	"Jose says 'With your own personal Meka you'll show those noobs who numbah 1 is. :D'",
 ];
 
 response.hawList = ["HAWWWW", "Haw", "HHHHHHHHHAAWWW", "HHAAAAAAAWWWW", "HHAAWWWWWWWW", "HAW", "HAAW", "HAAWWW"];
