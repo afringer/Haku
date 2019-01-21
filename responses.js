@@ -109,6 +109,22 @@ response.goodAfternoonListK = [
 	"Kristen!! I hope you had lunch already. I would make you a bento but my paws are too small!!",
 	"K R I S T E N",
 ];
+response.goodEveningList = [
+	"Good Evening!",
+	"Good Evening",
+	"Yay, its time to go home! I hope I can see Kristen!",
+	"Hello, Good Evening!",
+];
+
+response.goodEveningListK = [
+	"Good Evening!!!!!!",
+	"Konbanwa",
+	"GOOD EVENING KRISTEN!!",
+	"Kristen!! Tell me all about your day. Don't leave out a single thing! ʕ•ᴥ•ʔ",
+	"Oh My Goodness, Kristen!!! Let's play Overwatch!!! (｡◕‿‿◕｡)",
+	"This evening is as adorable as you,hi",
+	"You're mesmerizing as always this evening.",
+];
 
 response.goodNight = ["Goodnight!", "uwu goodnite!", "Sleep tight! Don't let the bed mice bite!", "Night Night!"];
 
@@ -168,6 +184,8 @@ response.freindMessages = [
 	"Adam says 'Hurry up and die, no one is around to save you', You know, because kevin",
 	"Kelsey feels loved when Kristen is around.",
 	"Adam says 'man I love this job. If anyone is ever rude to me I get to charge them money for wasting my time or send a court order to get what I want'",
+	"Jose loves seeing your happy face!",
+	"Jose says 'With your own personal Meka you'll show those noobs who numbah 1 is. :D'",
 ];
 
 response.hawList = ["HAWWWW", "Haw", "HHHHHHHHHAAWWW", "HHAAAAAAAWWWW", "HHAAWWWWWWWW", "HAW", "HAAW", "HAAWWW"];
