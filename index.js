@@ -18,13 +18,12 @@ client.on("error", function(err) {
 });
 
 client.on("message", (msg) => {
+	console.log(util.format("User %s (id: %d) wrote: %s", msg.author.username, msg.author.id, msg.content));
+
 	// Ignore messages from ourselves and other bots to prevent spam
-	if (msg.author.username === client.user.username || msg.author.bot) {
+	if (msg.author.id === client.user.id || msg.author.bot) {
 		return;
 	}
-
-	console.log(util.format("User %s (id: %d) wrote: %s", msg.author.username, msg.author.id, msg.content));
-	setRandomActivity();
 
 	if (msg.author.id === KristenUserId) {
 		lastKristen = Date.now();
@@ -122,7 +121,9 @@ client.on("message", (msg) => {
 	}
 });
 
-const randomString = function(array, username = "") {
+const randomString = function(array, username = "", setActivty = true) {
+	if (setActivty) setRandomActivity();
+
 	const msg = array[Math.floor(Math.random() * array.length)];
 	if (msg.includes("%s")) return util.format(msg, username);
 
@@ -131,9 +132,9 @@ const randomString = function(array, username = "") {
 
 const setRandomActivity = function() {
 	const activities = responses.BotActivities;
-	const keys = Object.keys(activities);
-	const key = keys[Math.floor(Math.random() * keys.length)];
-	client.user.setActivity(randomString(activities[key]), { type: key });
+	const entries = Object.entries(activities);
+	const [type, specificActivities] = entries[Math.floor(Math.random() * entries.length)];
+	client.user.setActivity(randomString(specificActivities, "", false), { type });
 };
 
 client.login(config.key);
