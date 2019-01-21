@@ -9,7 +9,8 @@ const client = new Discord.Client();
 let lastKristen = 0;
 
 client.on("ready", () => {
-	console.log(`Logged in as ${client.user.tag}!`);
+	console.log(util.format("Logged in as %s (id %d)", client.user.username, client.user.id));
+	setRandomActivity();
 });
 
 client.on("error", function(err) {
@@ -19,7 +20,8 @@ client.on("error", function(err) {
 client.on("message", (msg) => {
 	console.log(util.format("User %s (id: %d) wrote: %s", msg.author.username, msg.author.id, msg.content));
 
-	if (msg.author.username === client.user.username) {
+	// Ignore messages from ourselves and other bots to prevent spam
+	if (msg.author.id === client.user.id || msg.author.bot) {
 		return;
 	}
 
@@ -128,11 +130,20 @@ client.on("message", (msg) => {
 	}
 });
 
-const randomString = function(array, username = "") {
+const randomString = function(array, username = "", setActivty = true) {
+	if (setActivty) setRandomActivity();
+
 	const msg = array[Math.floor(Math.random() * array.length)];
 	if (msg.includes("%s")) return util.format(msg, username);
 
 	return msg;
+};
+
+const setRandomActivity = function() {
+	const activities = responses.BotActivities;
+	const entries = Object.entries(activities);
+	const [type, specificActivities] = entries[Math.floor(Math.random() * entries.length)];
+	client.user.setActivity(randomString(specificActivities, "", false), { type });
 };
 
 client.login(config.key);

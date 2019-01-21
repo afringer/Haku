@@ -1,6 +1,13 @@
 var response = {};
 module.exports = response;
 
+response.BotActivities = {
+	PLAYING: ["hide and seek with Kristen"],
+	// // Listening acitivies will be prefixed in discord with "Listening to "
+	LISTENING: ["Kristen"],
+	WATCHING: ["over Kristen", "Kristen kicking ass and taking names"],
+};
+
 response.KristenMentions = [
 	"Kristen? I love her!",
 	"owo Kwisten? I wove Kwisten!",
