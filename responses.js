@@ -113,7 +113,7 @@ response.goodEveningList = [
 	"Good Evening!",
 	"Good Evening",
 	"Yay, its time to go home! I hope I can see Kristen!",
-	"Hello, Good Evening!"
+	"Hello, Good Evening!",
 ];
 
 response.goodEveningListK = [
@@ -122,8 +122,8 @@ response.goodEveningListK = [
 	"GOOD EVENING KRISTEN!!",
 	"Kristen!! Tell me all about your day. Don't leave out a single thing! ʕ•ᴥ•ʔ",
 	"Oh My Goodness, Kristen!!! Let's play Overwatch!!! (｡◕‿‿◕｡)",
-	"This evening is as adorable as you,hi"
-	"You're mesmerizing as always this evening."
+	"This evening is as adorable as you,hi",
+	"You're mesmerizing as always this evening.",
 ];
 
 response.goodNight = ["Goodnight!", "uwu goodnite!", "Sleep tight! Don't let the bed mice bite!", "Night Night!"];
