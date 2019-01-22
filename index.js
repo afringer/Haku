@@ -1,6 +1,6 @@
 const util = require("util");
 const Discord = require("discord.js");
-const config = require("./config-dev.js");
+const config = require("./config.js");
 const responses = require("./responses.js");
 const KristenUserId = 326959353603031040;
 
