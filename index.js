@@ -5,11 +5,11 @@ const responses = require("./responses.js");
 const KristenUserId = 326959353603031040;
 
 const client = new Discord.Client();
-
 let lastKristen = 0;
 
 client.on("ready", () => {
 	console.log(util.format("Logged in as %s (id %d)", client.user.username, client.user.id));
+	console.log("test");
 	setRandomActivity();
 });
 
