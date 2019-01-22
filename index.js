@@ -5,7 +5,7 @@ const responses = require("./responses.js");
 const KristenUserId = 326959353603031040;
 
 const client = new Discord.Client();
-
+// adam was here
 let lastKristen = 0;
 
 client.on("ready", () => {
