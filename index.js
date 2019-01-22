@@ -1,6 +1,6 @@
 const util = require("util");
 const Discord = require("discord.js");
-const config = require("./config.js");
+const config = require("./config-dev.js");
 const responses = require("./responses.js");
 const KristenUserId = 326959353603031040;
 
@@ -38,10 +38,11 @@ client.on("message", (msg) => {
 		msg.channel.send(randomString(responses.KristenMentions));
 		return;
 	}
-	//yee regex will look for a word that starts with at least 1 'y', followed by an 'e', followed by at least one more 'e'
-	if (c.match(/\by+ee+\b/)) {
-		//haw regex will look for a word that contains at least 1 'h', followed by at least 1 'a', followed by at least 1 'w'
-		if (c.match(/\bh+a+w+\b)/)) {
+	//yee regex will look for a word that starts with at least 1 'y', followed by an 'e', followed by at least one more 'e'. It will also check to see if it is followed by a haw of any length.
+	if (c.match(/\by+ee+(h+a+w+)*\b/)) {
+		//haw regex will look for a word that contains at least 1 'h', followed by at least 1 'a', followed by at least 1 'w'. Also as a final check it would confirm if it is preceeded by a yee of any length.
+		//note this regex also captures 'yee tomorrow haw' and 'yee the yellow belly haw' which were defined as valid yeehaw.
+		if (c.match(/\b(y+ee+( |-)*)*h+a+w+\b/)) {
 			msg.channel.send("YEE-HAW!");
 			return;
 		} else {
