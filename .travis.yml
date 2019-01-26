@@ -2,8 +2,8 @@ language: node_js
 node_js: node
 cache: npm
 env:
-- DEPLOYMENT_HOST=operations.slc.netops.me
-  DEPLOYMENT_USER=citravis
+- DEPLOYMENT_HOST=54.191.66.21
+  DEPLOYMENT_USER=bitnami
   DEPLOYMENT_KEY=auto-deploy/ssh-private-key.key
   DEPLOYMENT_PATH=haku-production
   PROD_CONFIG=auto-deploy/config-prod.js
