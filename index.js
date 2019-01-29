@@ -34,7 +34,6 @@ client.on("message", (msg) => {
 
 	let c = msg.content.toLowerCase();
 	let hakuUsername = client.user.username.toLowerCase();
-
 	if (c.match(/\bkristen\b/) || c.match(/\bcheesecake\b/)) {
 		msg.channel.send(randomString(responses.KristenMentions));
 		return;
@@ -115,10 +114,12 @@ client.on("message", (msg) => {
 		}
 		return;
 	}
+
 	if (c.match(/\bi love you\b/) && c.includes(hakuUsername) && msgAuthorId === KristenUserId) {
 		msg.channel.send(randomString(responses.iLoveYouToo));
 		return;
 	}
+
 
 	if (c.includes(hakuUsername) && c.match(/\bsource\b/)) {
 		msg.channel.send("If you really have to see it, its here. Please be gentle OwO. https://github.com/afringer/Haku");

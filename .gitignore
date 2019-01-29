@@ -3,6 +3,7 @@ node_modules
 config-prod.js
 config-dev.js
 config.js
+prod-encryption.txt
 
 logs
 *.log
