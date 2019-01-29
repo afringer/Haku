@@ -34,7 +34,7 @@ client.on("message", (msg) => {
 
 	let c = msg.content.toLowerCase();
 
-	if (c.includes("kristen") || c.includes("cheesecake")) {
+	if (c.match(/\bkristen\b/) || c.match(/\bcheesecake\b/)) {
 		msg.channel.send(randomString(responses.KristenMentions));
 		return;
 	}
