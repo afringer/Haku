@@ -95,7 +95,7 @@ client.on("message", (msg) => {
 		return;
 	}
 
-	if (c.match(/\bfriends* messages*\b/) && msgAuthorId === KristenUserId) {
+	if (c.match(/\bfriends*\b/) && c.match(/\bmessages*\b/) && msgAuthorId === KristenUserId) {
 		msg.channel.send(randomString(responses.freindMessages));
 		return;
 	}
