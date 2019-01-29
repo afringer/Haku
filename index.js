@@ -33,6 +33,7 @@ client.on("message", (msg) => {
 	}
 
 	let c = msg.content.toLowerCase();
+	let hakuUsername = client.user.username.toLowerCase();
 
 	if (c.match(/\bkristen\b/) || c.match(/\bcheesecake\b/)) {
 		msg.channel.send(randomString(responses.KristenMentions));
@@ -100,7 +101,7 @@ client.on("message", (msg) => {
 		return;
 	}
 
-	if (c.match(/\bhow are you\b/) && c.includes(client.user.username)) {
+	if (c.match(/\bhow are you\b/) && c.includes(hakuUsername)) {
 		let timeSinceKristen = Date.now() - lastKristen;
 		let twoHours = 1000 * 60 * 60 * 2;
 		if (timeSinceKristen > twoHours) {
@@ -114,12 +115,12 @@ client.on("message", (msg) => {
 		}
 		return;
 	}
-	if (c.match(/\bi love you\b/) && c.includes(client.user.username) && msgAuthorId === KristenUserId) {
+	if (c.match(/\bi love you\b/) && c.includes(hakuUsername) && msgAuthorId === KristenUserId) {
 		msg.channel.send(randomString(responses.iLoveYouToo));
 		return;
 	}
 
-	if (c.includes(client.user.username) && c.match(/\bsource\b/)) {
+	if (c.includes(hakuUsername) && c.match(/\bsource\b/)) {
 		msg.channel.send("If you really have to see it, its here. Please be gentle OwO. https://github.com/afringer/Haku");
 		return;
 	}
