@@ -34,13 +34,15 @@ client.on("message", (msg) => {
 
 	let c = msg.content.toLowerCase();
 	let hakuUsername = client.user.username.toLowerCase();
-	if (c.includes("kristen") || c.includes("cheesecake")) {
+	if (c.match(/\bkristen\b/) || c.match(/\bcheesecake\b/)) {
 		msg.channel.send(randomString(responses.KristenMentions));
 		return;
 	}
-
-	if (c.includes("yee")) {
-		if (c.includes("haw")) {
+	//yee regex will look for a word that starts with at least 1 'y', followed by an 'e', followed by at least one more 'e'. It will also check to see if it is followed by a haw of any length.
+	if (c.match(/\by+ee+(h+a+w+)*\b/)) {
+		//haw regex will look for a word that contains at least 1 'h', followed by at least 1 'a', followed by at least 1 'w'. Also as a final check it would confirm if it is preceeded by a yee of any length.
+		//note this regex also captures 'yee tomorrow haw' and 'yee the yellow belly haw' which were defined as valid yeehaw.
+		if (c.match(/\b(y+ee+( |-)*)*h+a+w+\b/)) {
 			msg.channel.send("YEE-HAW!");
 			return;
 		} else {
@@ -49,7 +51,7 @@ client.on("message", (msg) => {
 		}
 	}
 
-	if (c.includes("good") && c.includes("morning")) {
+	if (c.match(/\bgood morning\b/)) {
 		if (msgAuthorId === KristenUserId) {
 			msg.channel.send(randomString(responses.goodMorningK));
 		} else {
@@ -59,7 +61,7 @@ client.on("message", (msg) => {
 		return;
 	}
 
-	if (c.includes("good") && c.includes("night")) {
+	if (c.match(/\bgood night\b/)) {
 		if (msgAuthorId === KristenUserId) {
 			msg.channel.send(randomString(responses.goodNightK));
 		} else {
@@ -69,7 +71,7 @@ client.on("message", (msg) => {
 		return;
 	}
 
-	if (c.includes("good") && c.includes("afternoon")) {
+	if (c.match(/\bgood afternoon\b/)) {
 		if (msgAuthorId === KristenUserId) {
 			msg.channel.send(randomString(responses.goodAfternoonListK));
 		} else {
@@ -78,7 +80,7 @@ client.on("message", (msg) => {
 
 		return;
 	}
-	if (c.includes("good") && c.includes("evening")) {
+	if (c.match(/\bgood evening\b/)) {
 		if (msgAuthorId === KristenUserId) {
 			msg.channel.send(randomString(responses.goodEveningListK));
 		} else {
@@ -88,21 +90,17 @@ client.on("message", (msg) => {
 		return;
 	}
 
-	if (c.includes("gourd")) {
+	if (c.match(/\bgourd\b/)) {
 		msg.channel.send("I have a " + randomString(responses.gourdList));
 		return;
 	}
 
-	if (
-		(c.includes("friends") || c.includes("friend")) &&
-		(c.includes("message") || c.includes("messages")) &&
-		msgAuthorId === KristenUserId
-	) {
+	if (c.match(/\bfriends*\b/) && c.match(/\bmessages*\b/) && msgAuthorId === KristenUserId) {
 		msg.channel.send(randomString(responses.freindMessages));
 		return;
 	}
 
-	if (c.includes("how") && c.includes("are") && c.includes("you") && c.includes(hakuUsername)) {
+	if (c.match(/\bhow are you\b/) && c.includes(hakuUsername)) {
 		let timeSinceKristen = Date.now() - lastKristen;
 		let twoHours = 1000 * 60 * 60 * 2;
 		if (timeSinceKristen > twoHours) {
@@ -116,18 +114,14 @@ client.on("message", (msg) => {
 		}
 		return;
 	}
-	if (
-		c.includes("i") &&
-		c.includes("love") &&
-		c.includes("you") &&
-		c.includes(hakuUsername) &&
-		msgAuthorId === KristenUserId
-	) {
+
+	if (c.match(/\bi love you\b/) && c.includes(hakuUsername) && msgAuthorId === KristenUserId) {
 		msg.channel.send(randomString(responses.iLoveYouToo));
 		return;
 	}
 
-	if (c.includes(hakuUsername) && c.includes("source")) {
+
+	if (c.includes(hakuUsername) && c.match(/\bsource\b/)) {
 		msg.channel.send("If you really have to see it, its here. Please be gentle OwO. https://github.com/afringer/Haku");
 		return;
 	}
