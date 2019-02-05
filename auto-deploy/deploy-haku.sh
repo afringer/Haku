@@ -30,11 +30,13 @@ for file in ${required_source_files}; do
 	fi
 done
 
+transfer_file_list+=" src"
+
 echo ${transfer_file_list}
 ssh -i ${deployment_key} ${deployment_user}@${deployment_host} << EOF
 [ -d ${deployment_path} ] && echo "skipping: ${deployment_path} exists" || mkdir -v ${deployment_path}
 EOF
-scp -i ${deployment_key} ${transfer_file_list} ${deployment_user}@${deployment_host}:${deployment_path}
+scp -i ${deployment_key} -r ${transfer_file_list} ${deployment_user}@${deployment_host}:${deployment_path}
 ssh -i ${deployment_key} ${deployment_user}@${deployment_host} << EOF
 cd ${deployment_path}
 bash run-haku.sh

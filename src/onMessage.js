@@ -1,27 +1,15 @@
-const util = require("util");
-const Discord = require("discord.js");
-const config = require("./config.js");
-const responses = require("./responses.js");
-const KristenUserId = 326959353603031040;
-
-const client = new Discord.Client();
-
+"use strict";
 let lastKristen = 0;
+const KristenUserId = 326959353603031040;
+const util = require("util");
+const { randomString } = require("./randomThings");
+const responses = require("./responses");
 
-client.on("ready", () => {
-	console.log(util.format("Logged in as %s (id %d)", client.user.username, client.user.id));
-	setRandomActivity();
-});
-
-client.on("error", function(err) {
-	console.log(err);
-});
-
-client.on("message", (msg) => {
+module.exports = ({ id, username }, msg) => {
 	console.log(util.format("User %s (id: %d) wrote: %s", msg.author.username, msg.author.id, msg.content));
 
 	// Ignore messages from ourselves and other bots to prevent spam
-	if (msg.author.id === client.user.id || msg.author.bot) {
+	if (msg.author.id === id || msg.author.bot) {
 		return;
 	}
 
@@ -33,22 +21,18 @@ client.on("message", (msg) => {
 	}
 
 	let c = msg.content.toLowerCase();
-	let hakuUsername = client.user.username.toLowerCase();
+	let hakuUsername = username.toLowerCase();
 	if (c.match(/\bkristen\b/) || c.match(/\bcheesecake\b/)) {
 		msg.channel.send(randomString(responses.KristenMentions));
 		return;
 	}
-	//yee regex will look for a word that starts with at least 1 'y', followed by an 'e', followed by at least one more 'e'. It will also check to see if it is followed by a haw of any length.
+	if (c.match(/\b(y+ee+( |-)*)*h+a+w+\b/)) {
+		msg.channel.send("YEE-HAW!");
+		return;
+	}
 	if (c.match(/\by+ee+(h+a+w+)*\b/)) {
-		//haw regex will look for a word that contains at least 1 'h', followed by at least 1 'a', followed by at least 1 'w'. Also as a final check it would confirm if it is preceeded by a yee of any length.
-		//note this regex also captures 'yee tomorrow haw' and 'yee the yellow belly haw' which were defined as valid yeehaw.
-		if (c.match(/\b(y+ee+( |-)*)*h+a+w+\b/)) {
-			msg.channel.send("YEE-HAW!");
-			return;
-		} else {
-			msg.channel.send(randomString(responses.hawList));
-			return;
-		}
+		msg.channel.send(randomString(responses.hawList));
+		return;
 	}
 
 	if (c.match(/\bgood morning\b/)) {
@@ -96,7 +80,7 @@ client.on("message", (msg) => {
 	}
 
 	if (c.match(/\bfriends*\b/) && c.match(/\bmessages*\b/) && msgAuthorId === KristenUserId) {
-		msg.channel.send(randomString(responses.freindMessages));
+		msg.channel.send(randomString(responses.friendMessages));
 		return;
 	}
 
@@ -120,27 +104,8 @@ client.on("message", (msg) => {
 		return;
 	}
 
-
 	if (c.includes(hakuUsername) && c.match(/\bsource\b/)) {
 		msg.channel.send("If you really have to see it, its here. Please be gentle OwO. https://github.com/afringer/Haku");
 		return;
 	}
-});
-
-const randomString = function(array, username = "", setActivty = true) {
-	if (setActivty) setRandomActivity();
-
-	const msg = array[Math.floor(Math.random() * array.length)];
-	if (msg.includes("%s")) return util.format(msg, username);
-
-	return msg;
 };
-
-const setRandomActivity = function() {
-	const activities = responses.BotActivities;
-	const entries = Object.entries(activities);
-	const [type, specificActivities] = entries[Math.floor(Math.random() * entries.length)];
-	client.user.setActivity(randomString(specificActivities, "", false), { type });
-};
-
-client.login(config.key);
