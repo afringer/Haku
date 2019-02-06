@@ -14,7 +14,7 @@ install:
 before_deploy:
 - ssh-keyscan "$DEPLOYMENT_HOST" 2>&1 | tee -a $HOME/.ssh/known_hosts
 - openssl aes-256-cbc -K "$ENC_KEY" -iv "$ENC_IV" -in auto-deploy/ssh-private-key.key.enc -out "$DEPLOYMENT_KEY" -d
-- openssl aes-256-cbc -K "$ENC_KEY" -iv "$ENC_IV" -in auto-deploy/config-prod.js.enc -out config.js -d
+- openssl aes-256-cbc -K "$ENC_KEY" -iv "$ENC_IV" -in auto-deploy/config-prod.js.enc -out src/config.js -d
 - eval "$(ssh-agent -s)"
 - chmod 0600 $DEPLOYMENT_KEY
 - ssh-add $DEPLOYMENT_KEY
