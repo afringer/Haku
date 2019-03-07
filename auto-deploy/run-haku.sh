@@ -27,7 +27,7 @@ fi
 
 echo "Attempting to start Haku Bot"
 npm ci
-nohup npm start >> haku.log &
+nohup npm start > haku.log &
 echo $! > haku.pid
 
 exit 0
