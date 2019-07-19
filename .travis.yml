@@ -2,7 +2,7 @@ language: node_js
 node_js: node
 cache: npm
 env:
-- DEPLOYMENT_HOST=54.191.66.21
+- DEPLOYMENT_HOST=35.165.127.246
   DEPLOYMENT_USER=bitnami
   DEPLOYMENT_KEY=auto-deploy/ssh-private-key.key
   DEPLOYMENT_PATH=haku-production
